@@ -2,11 +2,12 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MyVendorsListScreen from '../screens/MyVendorsListScreen';
-import ShowRoomScreen from '../screens/ShowRoomScreen';
 import getIconByName from '../constants/getIconByName';
 import colors from '../constants/colors';
-
+import Home from '../screens/Home';
+import Profile from '../screens/Profile';
+import Setting from '../screens/Setting';
+import Notifications from '../screens/Notifications';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -15,32 +16,58 @@ export default BottomTabNavigator = () => {
 
   return (
     <NavigationContainer>
-      <BottomTab.Navigator screenOptions={{headerShown: false}}>
+      <BottomTab.Navigator >
         <BottomTab.Screen
-          listeners={() => setRoute('Vendors')}
+          listeners={() => setRoute('Home')}
           options={{
-            tabBarLabel: 'Vendors',
-            tabBarIcon: () => getIconByName('VENDOR'),
+            tabBarLabel: 'Home',
+            tabBarIcon: () => getIconByName('Home'),
             tabBarLabelStyle:
-              route === 'Vendors'
+              route === 'Home'
                 ? {color: colors.primary}
                 : {color: colors.black},
           }}
-          name="MyVendorsListScreen"
-          component={MyVendorsListScreen}
+          name="Home"
+          component={Home}
         />
         <BottomTab.Screen
-          listeners={() => setRoute('Showroom')}
+          listeners={() => setRoute('Notifications')}
           options={{
-            tabBarLabel: 'Showroom',
-            tabBarIcon: () => getIconByName('SHOP'),
+            tabBarLabel: 'Notifications',
+            tabBarIcon: () => getIconByName('Notifications'),
             tabBarLabelStyle:
-              route === 'Showroom'
+              route === 'Notifications'
                 ? {color: colors.primary}
                 : {color: colors.black},
           }}
-          name="Settings"
-          component={ShowRoomScreen}
+          name="Notifications"
+          component={Notifications}
+        />
+        <BottomTab.Screen
+          listeners={() => setRoute('Profile')}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: () => getIconByName('Profile'),
+            tabBarLabelStyle:
+              route === 'Profile'
+                ? {color: colors.primary}
+                : {color: colors.black},
+          }}
+          name="Profile"
+          component={Profile}
+        />
+        <BottomTab.Screen
+          listeners={() => setRoute('Setting')}
+          options={{
+            tabBarLabel: 'Setting',
+            tabBarIcon: () => getIconByName('Setting'),
+            tabBarLabelStyle:
+              route === 'Setting'
+                ? {color: colors.primary}
+                : {color: colors.black},
+          }}
+          name="Setting"
+          component={Setting}
         />
       </BottomTab.Navigator>
     </NavigationContainer>
